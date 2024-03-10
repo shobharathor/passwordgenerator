@@ -44,6 +44,21 @@ const [includeSpecialCase,setIncludeSpecialCase] = useState(false);
          return password;
    }
 
+   const copyToPasswordHandle = () =>{
+       const newTextArea = document.createElement('textarea');
+        newTextArea.innerText = password;
+         document.body.appendChild(newTextArea);
+          newTextArea.select();
+          document.execCommand('copy');
+          alert("Password copy");
+          newTextArea.remove();
+          
+    }
+
+   const handleCopyPassword = (e) =>{
+      copyToPasswordHandle();
+   }
+
 
 
 
@@ -56,7 +71,7 @@ const [includeSpecialCase,setIncludeSpecialCase] = useState(false);
           </h2>
           <div className="generator-password">
             <h3>{password}</h3>
-            <button className="copy_btn">
+            <button onClick={handleCopyPassword} className="copy_btn">
               <i className='far fa-clipboard'></i>
             </button>
           </div>
